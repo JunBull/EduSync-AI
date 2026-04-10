@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Workspace } from '../components/Workspace';
+---
+
+<Layout title="EduSync AI - Asistente Académico">
+	<main class="h-screen w-full flex overflow-hidden bg-surface-100">
+		<Workspace client:load />
+	</main>
+</Layout>

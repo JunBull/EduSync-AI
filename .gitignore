@@ -1,0 +1,33 @@
+# Environment
+.env
+*.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+db.sqlite3
+
+# Node
+node_modules/
+dist/
+.astro/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# History (local data, don't commit)
+backend/history/
+
+# Docs artifacts
+*.log

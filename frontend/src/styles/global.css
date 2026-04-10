@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* ----------- Colors ----------- */
+  --color-primary-50: hsl(150 60% 98%);
+  --color-primary-100: hsl(150 50% 92%);
+  --color-primary-500: hsl(150 70% 30%); /* Verde botánico */
+  --color-primary-700: hsl(150 80% 20%);
+  --color-primary-900: hsl(150 90% 10%);
+
+  --color-secondary-50: hsl(40 80% 96%);
+  --color-secondary-100: hsl(40 70% 90%);
+  --color-secondary-500: hsl(40 80% 50%); /* Beige/Sand */
+  --color-secondary-900: hsl(40 90% 20%);
+
+  --color-surface-50: hsl(0 0% 100%); /* Blanco puro */
+  --color-surface-100: hsl(150 20% 98%); /* Gris ultra claro asimilando verde */
+  --color-surface-200: hsl(150 15% 95%);
+  --color-surface-800: hsl(150 10% 20%);
+  --color-surface-900: hsl(150 10% 15%);
+
+  --color-text-primary: hsl(150 90% 10%);
+  --color-text-secondary: hsl(150 10% 40%);
+  --color-text-inverse: hsl(0 0% 100%);
+
+  /* ----------- Fonts ----------- */
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-heading: 'Lexend', system-ui, sans-serif;
+
+  /* ----------- Radii (ROUND_FULL) ----------- */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 3rem;
+  --radius-full: 9999px;
+
+  /* ----------- Shadows ----------- */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface-100);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}

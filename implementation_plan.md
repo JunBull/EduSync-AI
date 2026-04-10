@@ -4,7 +4,7 @@
 
 Build a premium web application that processes class files (PDF, PPTX, DOCX) using Google Gemini AI to generate "Súper Resúmenes" that sync directly to the user's **"Notas de Clase"** Notion database.
 
-**Stack**: Astro (Frontend) + Django REST (Backend) + Gemini API (AI) + Notion API (Integration)
+**Stack**: Astro + Tailwind CSS v4 (Frontend) + Django REST (Backend) + Gemini API (AI) + Notion API (Integration)
 
 ---
 
@@ -61,7 +61,7 @@ d:\EduSync AI\
 │   │   │   ├── ProgressBar.jsx      # Processing status indicator
 │   │   │   └── Header.jsx           # App header/branding
 │   │   └── styles/
-│   │       └── global.css           # Design system: colors, gradients, animations
+│   │       └── global.css           # Tailwind v4 @theme config + design tokens
 │   └── .env                         # PUBLIC_API_URL=http://localhost:8000
 │
 ├── backend/                      # Django REST Framework
@@ -112,7 +112,7 @@ Python dependencies:
 Django config with:
 - REST framework config (JSON renderer/parser)
 - CORS allowed origins = `["http://localhost:4321"]`
-- File upload max size = 50MB
+- File upload max size = 25MB
 - No database needed (stateless processing)
 
 #### [NEW] `backend/api/urls.py`
@@ -167,13 +167,14 @@ Created via: `npm create astro@latest ./frontend -- --yes --template minimal --t
 React integration added via: `npx astro add react`
 
 #### [NEW] `frontend/src/styles/global.css`
-Premium dark design system:
-- **Color palette**: Deep navy (#0a0e1a), Electric violet (#7c3aed), Cyan accent (#06b6d4), Warm amber (#f59e0b)
-- **Glassmorphism** cards with backdrop-filter blur
-- **Typography**: Inter (body) + JetBrains Mono (code) from Google Fonts
+Tailwind CSS v4 con design tokens "Sage Intelligence" (de Stitch):
+- **Configuración CSS-first** vía `@import "tailwindcss"` + `@theme { ... }`
+- **Color palette**: Verdes botánicos (primary #2a6b44, secondary #3f6758, tertiary #2e6771)
+- **Glassmorphism** suave con surface al 70% opacity + backdrop-blur 20px
+- **Typography**: Lexend (headlines) + Plus Jakarta Sans (body) from Google Fonts
 - **Micro-animations**: fade-in, slide-up, pulse-glow, shimmer loading
-- **Custom scrollbar** theming
-- **Responsive grid** with split-panel layout (60/40 for main/chat)
+- **Roundness**: FULL — mínimo 1rem border-radius
+- **3-panel layout**: Sidebar + Workspace + AI Chat
 
 #### [NEW] `frontend/src/layouts/Layout.astro`
 Base HTML with:
@@ -202,7 +203,7 @@ Two-step cascading selector:
 #### [NEW] `frontend/src/components/FileUploader.jsx` (React island, `client:load`)
 - Drag & drop zone with animated dashed border
 - Accepts: `.pdf`, `.pptx`, `.docx`
-- Multi-file support (up to 5 files, 50MB each)
+- Multi-file support (up to 5 files, 25MB each)
 - File preview cards with type icon, name, size
 - Upload progress animation
 - "Procesar con IA" button → POST to `/api/process/`
@@ -290,16 +291,24 @@ graph LR
 
 ---
 
-## Open Questions
+## Open Questions (Resueltas)
 
-> [!IMPORTANT]
-> 1. **Gemini API Key**: Do you already have a Gemini API key, or should I include instructions for obtaining one?
-> 2. **Notion Integration Token**: Do you have an existing integration token with access to the "Notas de Clase" database, or do I need to guide you through creating one?
-> 3. **Python Version**: Do you have Python 3.11+ installed? This is required for Django 5.x.
-> 4. **Node.js Version**: Do you have Node.js 18+ installed? Required for Astro.
+> [!NOTE]
+> 1. **Gemini API Key**: ✅ Obtenida
+> 2. **Notion Integration Token**: ✅ Obtenido
+> 3. **Python Version**: ❌ No instalado — Requiere instalar Python 3.11+
+> 4. **Node.js Version**: ❌ No instalado — Requiere instalar Node.js 18+
+> 5. **File Size Limits**: Confirmado 25MB máx. por archivo, 5 archivos máximo.
 
-> [!WARNING]
-> 5. **File Size Limits**: The current plan supports up to 5 files, 50MB each. Gemini has token limits (~1M tokens for Flash). Very large documents may need chunking. Should I implement automatic chunking for large files?
+> **Decisiones adicionales confirmadas**:
+> - Uso personal, sin autenticación
+> - Solo uso local (sin despliegue)
+> - Historial local en archivos JSON
+> - Design system "Sage Intelligence" (light theme, verdes botánicos) desde Stitch
+> - Sin logo (solo texto "EduSync AI")
+> - Materias dinámicas desde Notion
+> - Archivos principalmente en español
+> - Secciones del Súper Resumen confirmadas como están
 
 ---
 
